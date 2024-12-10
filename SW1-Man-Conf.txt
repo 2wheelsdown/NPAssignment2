@@ -7,6 +7,6 @@ no shutdown
 exit
 ip default-gateway 192.168.1.1
 enable secret cisco
-##ne
+##needs ssh config
 
 
