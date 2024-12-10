@@ -2,7 +2,7 @@ en
 conf t
 hostname R1
 enable secret cisco
-interface gigabitEthernet 0/0
+interface gigabitEthernet 0/0/0
 ip address 192.168.1.1 255.255.255.0
 no shutdown
 exit
@@ -10,7 +10,9 @@ ip domain name one.com
 crypto key generate rsa general-keys modulus 1024
 ip ssh version 2
 username admin secret cisco
-line vty 0 1370
+line vty 0 97
 transport input ssh
 login local
+exit
+
 
