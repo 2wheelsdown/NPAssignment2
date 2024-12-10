@@ -7,6 +7,14 @@ no shutdown
 exit
 ip default-gateway 192.168.1.1
 enable secret cisco
+username admin secret cisco
+ip domain name one.com
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+line vty 0 15
+login local
+transport input ssh
+
 ##needs ssh config
 
 
