@@ -4,7 +4,7 @@ network 192.168.1.0/24 (first network)
 
 R1:
 	Gig 0/0/0: 192.168.1.1/24
-	Se0/0/0: 10.0.0.1/252 (router network)
+	Se0/1/0: 10.0.0.1/252 (router network)
 
 SW1: 	
 	VLAN1: 192.168.1.2/24
@@ -28,7 +28,7 @@ SW2:
 	Default gateway: 192.168.100.1
 
 PC2:
-	Fa0/1: 192.168.100.3/24
+	Fa0/1: 192.168.100.4/24
 	Default gateway: 192.168.100.1
 
 
