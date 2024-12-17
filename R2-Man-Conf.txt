@@ -17,4 +17,6 @@ username admin secret cisco
 line vty 0 97
 transport input ssh
 login local
+exit
+
 
