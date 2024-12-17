@@ -9,9 +9,9 @@
     - name: Secure Line Console 0 with a login password of 'cisco'
       cisco.ios.ios_config:
         lines:
-          - line con 0
           - password cisco
           - login
+        parents: line con 0
 
     - name: Enable service password encryption
       cisco.ios.ios_config:
