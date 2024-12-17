@@ -1,5 +1,5 @@
 ---
-- name: Configure Cisco IOS security
+- name: Configure Cisco IOS device security
   hosts: all
   gather_facts: no
   connection: network_cli
