@@ -1,6 +1,6 @@
 ---
 - name: Configure Cisco IOS device security
-  hosts: all
+  hosts: Routers
   gather_facts: no
   connection: network_cli
   become: yes
@@ -22,3 +22,36 @@
       cisco.ios.ios_config:
         lines:
           - security passwords min-length 3
+
+
+          
+- name: Configure Cisco IOS device security
+  hosts: Switches
+  gather_facts: no
+  connection: network_cli
+  become: yes
+  tasks:
+
+    - name: Secure Line Console 0 with a login password of 'cisco'
+      cisco.ios.ios_config:
+        lines:
+          - password cisco
+          - login
+        parents: line con 0
+
+    - name: Enable service password encryption
+      cisco.ios.ios_config:
+        lines:
+          - service password-encryption
+
+    - name: Enable AAA
+      cisco.ios.ios_config:
+        lines:
+          - aaa new-model
+
+    - name: Create Policy
+      cisco.ios.ios_config:
+        lines:
+          - min-length 10
+        parents: aaa common-criteria policy PasswordPolicy
+        
