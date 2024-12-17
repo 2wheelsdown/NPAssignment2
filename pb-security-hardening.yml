@@ -18,7 +18,7 @@
         lines:
           - service password-encryption
 
-    - name: Set minimum password length to 10
+    - name: Set minimum password length to 3
       cisco.ios.ios_config:
         lines:
           - security passwords min-length 3
