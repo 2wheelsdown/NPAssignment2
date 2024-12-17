@@ -1,0 +1,44 @@
+- name: Configure Cisco IOS device security
+  hosts: Routers
+  gather_facts: no
+  connection: network_cli
+  become: yes
+  tasks:
+    - name: Get the current console line configuration
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | section line con 0
+      register: console_line_config
+
+    - name: Secure Line Console 0 with a login password of 'cisco12345' if not configured
+      cisco.ios.ios_config:
+        lines:
+          - password cisco12345
+          - login
+        parents: line con 0
+      when: "'password cisco12345' not in console_line_config.stdout[0]"
+
+    - name: Enable service password encryption if not enabled
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | include service password-encryption
+      register: service_password_encryption
+
+    - name: Enable service password encryption
+      cisco.ios.ios_config:
+        lines:
+          - service password-encryption
+      when: "'service password-encryption' not in service_password_encryption.stdout[0]"
+
+    - name: Set minimum password length to 10 if not already set
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | include security passwords min-length
+      register: min_password_length
+
+    - name: Set minimum password length to 10
+      cisco.ios.ios_config:
+        lines:
+          - security passwords min-length 10
+      when: "'security passwords min-length 10' not in min_password_length.stdout[0]"
+
