@@ -5,7 +5,7 @@
   gather_facts: false
 
   tasks:
-    - name: run show version on the routers
+    - name: Display IOS version info from all inventory devices
       ios_command:
         commands: show version | incl Version
       register: output
