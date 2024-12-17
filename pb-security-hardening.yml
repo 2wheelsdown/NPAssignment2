@@ -1,0 +1,24 @@
+---
+- name: Configure Cisco IOS device security
+  hosts: all
+  gather_facts: no
+  connection: network_cli
+  become: yes
+  tasks:
+
+    - name: Secure Line Console 0 with a login password of 'cisco'
+      cisco.ios.ios_config:
+        lines:
+          - line con 0
+          - login
+          - password cisco
+
+    - name: Enable service password encryption
+      cisco.ios.ios_config:
+        lines:
+          - service password-encryption
+
+    - name: Set minimum password length to 10
+      cisco.ios.ios_config:
+        lines:
+          - security passwords min-length 10
