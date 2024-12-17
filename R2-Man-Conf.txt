@@ -10,6 +10,7 @@ interface serial 0/1/0
 ip address 10.0.0.2 255.255.255.252
 no shutdown
 exit
+ip route 192.168.1.0 255.255.255.0 serial 0/1/0
 ip domain name two.com
 crypto key generate rsa general-keys modulus 1024
 ip ssh version 2

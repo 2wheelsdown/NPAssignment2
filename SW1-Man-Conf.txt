@@ -14,7 +14,5 @@ ip ssh version 2
 line vty 0 15
 login local
 transport input ssh
-
-##needs ssh config
-
+exit
 
