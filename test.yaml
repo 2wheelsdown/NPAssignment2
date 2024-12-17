@@ -1,0 +1,11 @@
+vars:
+    var_targets: "{{ targets }}"
+    var_confirm: "{{ confirm }}"
+- name: Ping the other router
+   hosts: var_targets
+        lines:
+          - ping 192.168.1.1
+          - ping 192.168.100.1
+      when: "'yes' in var_confirm"
+
+# Command line sample: ansible-playbook test.yml --extra-vars "targets=(group or name) confirm=yes"
