@@ -1,5 +1,5 @@
 ---
-- name: Configure Cisco IOS device security
+- name: Configure Cisco IOS security
   hosts: all
   gather_facts: no
   connection: network_cli
@@ -10,8 +10,8 @@
       cisco.ios.ios_config:
         lines:
           - line con 0
-          - login
           - password cisco
+          - login
 
     - name: Enable service password encryption
       cisco.ios.ios_config:
