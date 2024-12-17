@@ -1,5 +1,5 @@
 - name: Set login banner
-  hosts: All
+  hosts: all
   connection: network_cli
   gather_facts: false
   tasks:
