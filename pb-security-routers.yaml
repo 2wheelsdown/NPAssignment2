@@ -4,7 +4,7 @@
   connection: network_cli
   become: yes
   tasks:
-    - name: Get the current console line configuration
+    - name: Get the current Console Line configuration
       cisco.ios.ios_command:
         commands:
           - show running-config | section line con 0
