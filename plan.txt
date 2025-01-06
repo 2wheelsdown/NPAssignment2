@@ -3,3 +3,5 @@
 3. ssh, meaning ip domain names, login info, rsa keys,
 4. text file to assist with CLI 
 5. ansible enables things like motd, password requirements etc, rip
+
+1 - 4 are now covered in the MAN config files
